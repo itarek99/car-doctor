@@ -19,7 +19,7 @@ const About = () => {
             some form, by injected humour, or randomized words which don't look even slightly believable.
           </p>
           <p className='my-6'>
-            the majority have suffered alteration in some form, by injected humour, or randomised words which don't look
+            the majority have suffered alteration in some form, by injected humour, or randomized words which don't look
             even slightly believable.
           </p>
           <button className='btn btn-primary'>Get More Info</button>
