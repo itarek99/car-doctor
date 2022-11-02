@@ -1,7 +1,49 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo.svg';
+import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 
 const Header = () => {
+  const { user, userSignOut } = useContext(AuthContext);
+
+  const handleSignOut = () => {
+    userSignOut()
+      .then(() => {})
+      .catch((err) => console.error(err));
+  };
+
+  const navItems = (
+    <>
+      <li>
+        <Link to='/' href='/'>
+          Home
+        </Link>
+      </li>
+      <li>
+        <a href='/'>About</a>
+      </li>
+      <li>
+        <a href='/'>Services</a>
+      </li>
+      <li>
+        <a href='/'>Blog</a>
+      </li>
+      <li>
+        <a href='/'>Contact</a>
+      </li>
+      <li>
+        <Link to='/login' href='/'>
+          Login
+        </Link>
+      </li>
+      <li>
+        <button className='p-0 text-primary' onClick={handleSignOut}>
+          {user?.email}
+        </button>
+      </li>
+    </>
+  );
+
   return (
     <div className='bg-base-100'>
       <div className='container mx-auto navbar h-28'>
@@ -19,21 +61,7 @@ const Header = () => {
               </svg>
             </label>
             <ul className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'>
-              <li>
-                <a href='/'>Home</a>
-              </li>
-              <li>
-                <a href='/'>About</a>
-              </li>
-              <li>
-                <a href='/'>Services</a>
-              </li>
-              <li>
-                <a href='/'>Blog</a>
-              </li>
-              <li>
-                <a href='/'>Contact</a>
-              </li>
+              {navItems}
             </ul>
           </div>
           <Link to='/'>
@@ -41,23 +69,7 @@ const Header = () => {
           </Link>
         </div>
         <div className='navbar-center hidden md:flex'>
-          <ul className='menu menu-horizontal p-0 font-semibold'>
-            <li>
-              <a href='/'>Home</a>
-            </li>
-            <li>
-              <a href='/'>About</a>
-            </li>
-            <li>
-              <a href='/'>Services</a>
-            </li>
-            <li>
-              <a href='/'>Blog</a>
-            </li>
-            <li>
-              <a href='/'>Contact</a>
-            </li>
-          </ul>
+          <ul className='menu menu-horizontal p-0 font-semibold'>{navItems}</ul>
         </div>
         <div className='navbar-end'>
           <a href='/' className='btn btn-outline btn-primary'>

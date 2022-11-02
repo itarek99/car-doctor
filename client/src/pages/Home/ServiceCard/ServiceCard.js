@@ -1,8 +1,6 @@
 const ServiceCard = ({ service }) => {
   const { img, title, price } = service;
 
-  console.log(service);
-
   return (
     <div className='card bg-base-100 shadow-xl rounded-none border'>
       <figure>
