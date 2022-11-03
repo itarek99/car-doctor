@@ -15,9 +15,7 @@ const Header = () => {
   const navItems = (
     <>
       <li>
-        <Link to='/' href='/'>
-          Home
-        </Link>
+        <Link to='/'>Home</Link>
       </li>
       <li>
         <a href='/'>About</a>
@@ -26,7 +24,7 @@ const Header = () => {
         <a href='/'>Services</a>
       </li>
       <li>
-        <a href='/'>Blog</a>
+        <Link to='/orders'>Orders</Link>
       </li>
       <li>
         <a href='/'>Contact</a>

@@ -1,11 +1,13 @@
 import { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import login from '../../assets/images/login/login.svg';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Login = () => {
   const { singInWithEmail } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -17,7 +19,7 @@ const Login = () => {
     singInWithEmail(email, password)
       .then(() => {
         form.reset();
-        navigate('/');
+        navigate(from, { replace: true });
       })
       .catch((err) => console.error(err));
   };
